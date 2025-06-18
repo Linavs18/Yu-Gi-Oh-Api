@@ -6,9 +6,11 @@ package co.edu.sena.yugi_api;
 
 import java.awt.Image;
 import java.net.URL;
+import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -27,6 +29,23 @@ public class YuGi_Fight extends javax.swing.JFrame {
         
         try {
             JSONArray cartas = YuGi_APIHelper.getRandomCards(10);
+            
+             jugadorCartas = new JSONObject[] {
+                cartas.getJSONObject(0),
+                cartas.getJSONObject(1),
+                cartas.getJSONObject(2)
+            };
+
+            rivalCartas = new JSONObject[] {
+                cartas.getJSONObject(3),
+                cartas.getJSONObject(4),
+                cartas.getJSONObject(5)
+            };
+            
+            jComboBox1.removeAllItems();
+            for (int i = 0; i < jugadorCartas.length; i++) {
+                jComboBox1.addItem(jugadorCartas[i].getString("name"));
+            }
             for (int i = 0; i < 3; i++) {
                 jugadorCartas[i] = cartas.getJSONObject(i);
                 rivalCartas[i] = cartas.getJSONObject(i + 3);
@@ -59,6 +78,11 @@ public class YuGi_Fight extends javax.swing.JFrame {
         jLabelRival1 = new javax.swing.JLabel();
         jLabelRival2 = new javax.swing.JLabel();
         jLabelRival3 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonAtk = new javax.swing.JButton();
+        jButtonDef = new javax.swing.JButton();
+        jButtonRestart = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fight");
@@ -85,22 +109,21 @@ public class YuGi_Fight extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(12, 12, 12)
                 .addComponent(jLabelCard1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(16, 16, 16)
                 .addComponent(jLabelCard2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelCard3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                .addGap(11, 11, 11))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCard3, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                    .addComponent(jLabelCard1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelCard2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelCard1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jLabelCard3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelCard2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -136,6 +159,30 @@ public class YuGi_Fight extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setText("Elije tu carta");
+
+        jButtonAtk.setText("ATAQUE");
+        jButtonAtk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAtkActionPerformed(evt);
+            }
+        });
+
+        jButtonDef.setText("DEFENSA");
+        jButtonDef.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDefActionPerformed(evt);
+            }
+        });
+
+        jButtonRestart.setText("Reiniciar");
+        jButtonRestart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRestartActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -145,20 +192,54 @@ public class YuGi_Fight extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
-                .addComponent(jLabelHome))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabelHome))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jButtonAtk)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButtonDef))
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 17, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonRestart)
+                        .addGap(81, 81, 81))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabelHome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelHome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel1)
+                        .addGap(33, 33, 33)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAtk)
+                            .addComponent(jButtonDef))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jButtonRestart)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,6 +262,18 @@ public class YuGi_Fight extends javax.swing.JFrame {
         view.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jLabelHomeMouseClicked
+
+    private void jButtonAtkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAtkActionPerformed
+        combatir("Ataque");
+    }//GEN-LAST:event_jButtonAtkActionPerformed
+
+    private void jButtonDefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDefActionPerformed
+        combatir("Defensa");
+    }//GEN-LAST:event_jButtonDefActionPerformed
+
+    private void jButtonRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRestartActionPerformed
+        reiniciarJuego();
+    }//GEN-LAST:event_jButtonRestartActionPerformed
     
     private String formatoCarta(JSONObject carta, JLabel label) {
         String nombre = carta.getString("name");
@@ -229,7 +322,85 @@ public class YuGi_Fight extends javax.swing.JFrame {
         mostrarImagenCarta(rivalCartas[2], jLabelRival3);
 
     }
+    
+    private void combatir(String modoJugador) {
+    int seleccion = jComboBox1.getSelectedIndex();
+    
+    if (seleccion < 0) {
+        JOptionPane.showMessageDialog(this, "Selecciona una carta antes de combatir.");
+        return;
+    }
 
+    JSONObject cartaJugador = jugadorCartas[seleccion];
+    JSONObject cartaRival = rivalCartas[new Random().nextInt(3)];
+
+    String nombreJugador = cartaJugador.optString("name", "Carta jugador");
+    String nombreRival = cartaRival.optString("name", "Carta rival");
+
+    int atkJ = cartaJugador.optInt("atk", 0);
+    int defJ = cartaJugador.optInt("def", 0);
+    int atkR = cartaRival.optInt("atk", 0);
+    int defR = cartaRival.optInt("def", 0);
+
+    String modoRival = Math.random() > 0.5 ? "Ataque" : "Defensa";
+
+    String resultado;
+
+    if (modoJugador.equals("Ataque") && modoRival.equals("Ataque")) {
+        resultado = atkJ > atkR ? "Ganaste en Ataque" : "Perdiste en Ataque";
+    } else if (modoJugador.equals("Ataque") && modoRival.equals("Defensa")) {
+        resultado = atkJ > defR ? "Ganaste. Tu ataque superó la defensa" : "Peridste. Tu ataque fue bloqueado";
+    } else if (modoJugador.equals("Defensa") && modoRival.equals("Ataque")) {
+        resultado = defJ > atkR ? "Ganaste. Bloqueaste el ataque del rival" : " Perdiste. Tu defensa fue vencida";
+    } else {
+        resultado = defJ > defR ? "Ganaste. Tu defensa fue más fuerte" : "Empate defensivo.";
+    }
+
+    String mensaje = """
+            Carta seleccionada: %s (%s: ATK %d / DEF %d)
+            Carta rival: %s (%s: ATK %d / DEF %d)
+            
+            Resultado:
+            %s
+            """.formatted(
+            nombreJugador, modoJugador, atkJ, defJ,
+            nombreRival, modoRival, atkR, defR,
+            resultado
+    );
+
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+    
+    private void reiniciarJuego() {
+        try {
+            jButtonRestart.setEnabled(false);
+            JSONArray cartas = YuGi_APIHelper.getRandomCards(10);
+            jugadorCartas = new JSONObject[] {
+                cartas.getJSONObject(0), cartas.getJSONObject(1), cartas.getJSONObject(2)
+            };
+            rivalCartas = new JSONObject[] {
+                cartas.getJSONObject(3), cartas.getJSONObject(4), cartas.getJSONObject(5)
+            };
+
+            // Mostrar imágenes (asume que ya tienes este método)
+            mostrarCartasJugador();
+            mostrarCartasRival();
+
+            // Llenar ComboBox
+            jComboBox1.removeAllItems();
+            for (int i = 0; i < jugadorCartas.length; i++) {
+                jComboBox1.addItem(jugadorCartas[i].getString("name"));
+            }
+
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error al reiniciar");
+    }
+     finally {
+            jButtonRestart.setEnabled(true);
+            
+        }
+}
     /**
      * @param args the command line arguments
      */
@@ -266,6 +437,11 @@ public class YuGi_Fight extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAtk;
+    private javax.swing.JButton jButtonDef;
+    private javax.swing.JButton jButtonRestart;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCard1;
     private javax.swing.JLabel jLabelCard2;
     private javax.swing.JLabel jLabelCard3;

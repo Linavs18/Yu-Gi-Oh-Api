@@ -42,7 +42,6 @@ public class YuGi_API extends javax.swing.JFrame {
         imagen = new javax.swing.JLabel();
         jButtonConsult = new javax.swing.JButton();
         jLabelArchetype = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jTextFieldArchetype = new javax.swing.JTextField();
         jLabelRace = new javax.swing.JLabel();
         jTextFieldRace = new javax.swing.JTextField();
@@ -137,9 +136,9 @@ public class YuGi_API extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
                         .addComponent(jLabelName)
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,18 +149,23 @@ public class YuGi_API extends javax.swing.JFrame {
                                 .addComponent(JButtonFight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelID)
-                            .addComponent(jLabelType)
-                            .addComponent(jLabelArchetype)
-                            .addComponent(jLabelAttribute)
-                            .addComponent(jLabelRace)
-                            .addComponent(jLabelAtk)
-                            .addComponent(jLabelDef)
-                            .addComponent(jLabelLevel)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelID)
+                                    .addComponent(jLabelType)
+                                    .addComponent(jLabelArchetype)
+                                    .addComponent(jLabelAttribute)
+                                    .addComponent(jLabelRace)
+                                    .addComponent(jLabelAtk)
+                                    .addComponent(jLabelDef)
+                                    .addComponent(jLabelLevel))
+                                .addGap(20, 20, 20))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextFieldDef)
                             .addComponent(jTextFieldAtk)
                             .addComponent(jTextFieldRace)
@@ -171,7 +175,7 @@ public class YuGi_API extends javax.swing.JFrame {
                             .addComponent(jTextFieldType, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextFieldLevel, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextPane1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -215,23 +219,18 @@ public class YuGi_API extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelDef)
                             .addComponent(jTextFieldDef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextFieldLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelLevel))
-                                .addGap(34, 34, 34)
-                                .addComponent(jTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(45, 45, 45)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelLevel))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jLabellogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo.png"))); // NOI18N
@@ -248,7 +247,8 @@ public class YuGi_API extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabellogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -268,11 +268,13 @@ public class YuGi_API extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNameActionPerformed
 
     private void jButtonConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultActionPerformed
-        // TODO add your handling code here:
+        jButtonConsult.setEnabled(false);
         obtenerDatos();
+        jButtonConsult.setEnabled(true);
     }//GEN-LAST:event_jButtonConsultActionPerformed
 
     private void JButtonFightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonFightActionPerformed
+        JButtonFight.setEnabled(false);
         YuGi_Fight view = new YuGi_Fight();
         view.setVisible(true);
         setVisible(false);
@@ -310,7 +312,8 @@ public class YuGi_API extends javax.swing.JFrame {
                  if(carta.has("def"))
                      jTextFieldDef.setText(String.valueOf(carta.getInt("def")));
                  if(carta.has("level"))
-                     jTextFieldLevel.setText(String.valueOf(carta.getInt("level")));
+                     jTextFieldDef.setText(String.valueOf(carta.getInt("level")));
+                 
                  
                  jTextPane1.setText(carta.getString("desc"));
                  
@@ -386,7 +389,6 @@ public class YuGi_API extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelType;
     private javax.swing.JLabel jLabellogo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldArchetype;
     private javax.swing.JTextField jTextFieldAtk;

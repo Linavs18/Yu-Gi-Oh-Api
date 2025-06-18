@@ -33,6 +33,7 @@
               <Component id="jLabellogo" min="-2" pref="200" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,9 +53,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jLabelName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -68,19 +69,27 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelID" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelType" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelArchetype" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelAttribute" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelRace" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelAtk" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelDef" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelLevel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabelID" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelType" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelArchetype" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelAttribute" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelRace" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelAtk" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelDef" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelLevel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                               <Component id="jTextFieldDef" alignment="0" max="32767" attributes="0"/>
                               <Component id="jTextFieldAtk" alignment="0" max="32767" attributes="0"/>
                               <Component id="jTextFieldRace" alignment="0" max="32767" attributes="0"/>
@@ -93,7 +102,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="imagen" min="-2" pref="250" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -148,30 +157,23 @@
                               <Component id="jLabelDef" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextFieldDef" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextFieldLevel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabelLevel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="jTextPane1" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTextFieldLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelLevel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="62" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextPane1" min="-2" pref="103" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="imagen" min="-2" pref="365" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -213,10 +215,6 @@
             <Property name="text" type="java.lang.String" value="Arquetipo"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-        </Container>
         <Component class="javax.swing.JTextField" name="jTextFieldArchetype">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelRace">
