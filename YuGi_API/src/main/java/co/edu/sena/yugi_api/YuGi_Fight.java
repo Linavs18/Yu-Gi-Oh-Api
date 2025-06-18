@@ -4,17 +4,40 @@
  */
 package co.edu.sena.yugi_api;
 
+import java.awt.Image;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 /**
  *
  * @author USUARIO
  */
 public class YuGi_Fight extends javax.swing.JFrame {
-
+    private JSONObject[] jugadorCartas = new JSONObject[3];
+    private JSONObject[] rivalCartas = new JSONObject[3];
     /**
      * Creates new form YuGi_Fight
      */
     public YuGi_Fight() {
         initComponents();
+        
+        try {
+            JSONArray cartas = YuGi_APIHelper.getRandomCards(10);
+            for (int i = 0; i < 3; i++) {
+                jugadorCartas[i] = cartas.getJSONObject(i);
+                rivalCartas[i] = cartas.getJSONObject(i + 3);
+            }
+
+            mostrarCartasJugador();
+            mostrarCartasRival();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -26,14 +49,19 @@ public class YuGi_Fight extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelLogo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabelHome = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelCard1 = new javax.swing.JLabel();
+        jLabelCard2 = new javax.swing.JLabel();
+        jLabelCard3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabelRival1 = new javax.swing.JLabel();
+        jLabelRival2 = new javax.swing.JLabel();
+        jLabelRival3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fight");
-
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/logo.png"))); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(203, 52, 34));
 
@@ -44,36 +72,104 @@ public class YuGi_Fight extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tus cartas"));
+
+        jLabelCard1.setText("jLabel1");
+
+        jLabelCard2.setText("jLabel2");
+
+        jLabelCard3.setText("jLabel3");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabelCard1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelCard2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelCard3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addGap(11, 11, 11))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCard3, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                    .addComponent(jLabelCard1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelCard2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Cartas del rival"));
+
+        jLabelRival1.setText("jLabel4");
+
+        jLabelRival2.setText("jLabel5");
+
+        jLabelRival3.setText("jLabel6");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelRival1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelRival2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelRival3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelRival1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelRival2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelRival3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelHome, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addComponent(jLabelHome))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabelHome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -85,6 +181,54 @@ public class YuGi_Fight extends javax.swing.JFrame {
         view.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jLabelHomeMouseClicked
+    
+    private String formatoCarta(JSONObject carta, JLabel label) {
+        String nombre = carta.getString("name");
+        int atk = carta.has("atk") ? carta.getInt("atk") : 0;
+        int def = carta.has("def") ? carta.getInt("def") : 0;
+        
+        String urlImg = carta.getJSONArray("card_images").getJSONObject(0).getString("image_url");
+        label.setIcon(obtenerImagen(urlImg));
+        label.setHorizontalTextPosition(JLabel.CENTER);
+        label.setVerticalTextPosition(JLabel.BOTTOM);
+        
+        return "<html>" + nombre + "<br>ATK: " + atk + "<br>DEF: " + def + "</html>";
+    }
+    
+    public ImageIcon obtenerImagen(String urlImagen) {
+        try {
+            URL url = new URL(urlImagen);
+            Image image = ImageIO.read(url);
+            Image scaled = image.getScaledInstance(150, 220, Image.SCALE_SMOOTH); // Ajusta el tamaño
+            return new ImageIcon(scaled);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    private void mostrarImagenCarta(JSONObject carta, JLabel label) {
+        try {
+            String urlImg = carta.getJSONArray("card_images").getJSONObject(0).getString("image_url");
+            label.setIcon(obtenerImagen(urlImg));
+            label.setText(""); // No texto, solo imagen
+        } catch (Exception e) {
+            label.setText("Error al cargar imagen");
+        }
+    }
+    
+    private void mostrarCartasJugador() {
+        jLabelCard1.setText(formatoCarta(jugadorCartas[0], jLabelCard1));
+        jLabelCard2.setText(formatoCarta(jugadorCartas[1], jLabelCard2));
+        jLabelCard3.setText(formatoCarta(jugadorCartas[2], jLabelCard3));
+    }
+
+    private void mostrarCartasRival() {
+        mostrarImagenCarta(rivalCartas[0], jLabelRival1);
+        mostrarImagenCarta(rivalCartas[1], jLabelRival2);
+        mostrarImagenCarta(rivalCartas[2], jLabelRival3);
+
+    }
 
     /**
      * @param args the command line arguments
@@ -122,8 +266,15 @@ public class YuGi_Fight extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabelCard1;
+    private javax.swing.JLabel jLabelCard2;
+    private javax.swing.JLabel jLabelCard3;
     private javax.swing.JLabel jLabelHome;
-    private javax.swing.JLabel jLabelLogo;
+    private javax.swing.JLabel jLabelRival1;
+    private javax.swing.JLabel jLabelRival2;
+    private javax.swing.JLabel jLabelRival3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
